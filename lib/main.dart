@@ -1,7 +1,5 @@
 import 'package:chat_socket/inicial.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/status.dart' as status;
 
 void main() => runApp(const MyApp());
 
