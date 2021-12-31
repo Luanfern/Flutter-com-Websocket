@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Chat extends StatefulWidget {
@@ -11,9 +12,8 @@ class Chat extends StatefulWidget {
 
 class _ChatState extends State<Chat> {
   final TextEditingController _controller = TextEditingController();
-  final _channel = WebSocketChannel.connect(
-    Uri.parse('wss://echo.websocket.org'),
-  );
+  final WebSocketChannel channel = IOWebSocketChannel.connect('ws://echo.websocket.org');
+  final _channel = WebSocketChannel.connect(Uri.parse('wss://echo.websocket.org'),);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class _ChatState extends State<Chat> {
                   flex: 2,
                   child: IconButton(
                     onPressed: _sendMessage,
-                    icon: const Icon(Icons.send),
+                    icon: const Icon(Icons.send, color: Colors.amber,),
                   ),
                 ),
               ],

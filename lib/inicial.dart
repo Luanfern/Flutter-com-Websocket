@@ -27,9 +27,9 @@ class _InicialState extends State<Inicial> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  Text('CHAT'),
+                  Text('CHAT', style: TextStyle(fontSize: 30)),
                   SizedBox(width: 10),
-                  Icon(Icons.chat)
+                  Icon(Icons.chat, size: 30),
                 ],
               ),
             Container(
@@ -47,6 +47,7 @@ class _InicialState extends State<Inicial> {
             GestureDetector(
                 onTap: () {
                   if (_controller.text.isNotEmpty) {
+                    FocusScope.of(context).requestFocus(FocusNode());
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -61,13 +62,9 @@ class _InicialState extends State<Inicial> {
                       action: SnackBarAction(
                         label: 'OK',
                         onPressed: () {
-                          // Some code to undo the change.
                         },
                       ),
                     );
-
-                    // Find the ScaffoldMessenger in the widget tree
-                    // and use it to show a SnackBar.
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                 },
