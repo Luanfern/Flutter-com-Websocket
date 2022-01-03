@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/io.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:http/http.dart' as http;
+/* import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart'; */
 
 class Chat extends StatefulWidget {
   final String author;
@@ -15,8 +12,8 @@ class Chat extends StatefulWidget {
 
 class _ChatState extends State<Chat> {
   final TextEditingController _controller = TextEditingController();
-  final WebSocketChannel channel = IOWebSocketChannel.connect('ws://echo.websocket.org');
-  final _channel = WebSocketChannel.connect(Uri.parse('wss://echo.websocket.org'),);
+  /* final WebSocketChannel channel = IOWebSocketChannel.connect('ws://echo.websocket.org');
+  final _channel = WebSocketChannel.connect(Uri.parse('wss://echo.websocket.org'),); */
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +28,17 @@ class _ChatState extends State<Chat> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Center(
+             Center(
               child: Text('Seu nome de exibicao: ${widget.author}'),
             ),
             const SizedBox(height: 10),
-            StreamBuilder(
+            Container(),
+            /* StreamBuilder(
               stream: _channel.stream,
               builder: (context, snapshot) {
                 return Text(snapshot.hasData ? '${snapshot.data}' : '');
               },
-            ),
+            ), */
             const SizedBox(height: 40),
             Row(
               children: [
@@ -58,7 +56,7 @@ class _ChatState extends State<Chat> {
                 Expanded(
                   flex: 2,
                   child: IconButton(
-                    onPressed: _sendMessage,
+                    onPressed: (){}/* _sendMessage */,
                     icon: const Icon(Icons.send, color: Colors.amber,),
                   ),
                 ),
@@ -70,7 +68,7 @@ class _ChatState extends State<Chat> {
     );
   }
 
-  void _sendMessage() {
+  /* void _sendMessage() {
     if (_controller.text.isNotEmpty) {
       _channel.sink.add(_controller.text);
     }
@@ -80,5 +78,5 @@ class _ChatState extends State<Chat> {
   void dispose() {
     _channel.sink.close();
     super.dispose();
-  }
+  } */
 }

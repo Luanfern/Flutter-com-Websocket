@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'chat.dart';
-
 class Inicial extends StatefulWidget {
   const Inicial({Key? key}) : super(key: key);
 
@@ -48,14 +45,7 @@ class _InicialState extends State<Inicial> {
                 onTap: () {
                   if (_controller.text.isNotEmpty) {
                     FocusScope.of(context).requestFocus(FocusNode());
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Chat(
-                          author: _controller.text,
-                        ),
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/chat', arguments: _controller.text);
                   } else {
                     final snackBar = SnackBar(
                       content: const Text('Escreva seu nome de exibicao'),
